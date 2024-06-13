@@ -12,6 +12,9 @@ namespace Snake
 class Grid;
 }
 
+class UStaticMeshComponent;
+struct FSnakeColors;
+
 UCLASS()
 class SNAKEGAME_API ASG_Grid : public AActor
 {
@@ -29,8 +32,20 @@ public:
      */
     void SetModel(const TSharedPtr<Snake::Grid>& Grid, uint32 CellSize);
 
+    void UpdateColors(const FSnakeColors& Colors);
+
 protected:
+    UPROPERTY(VisibleAnywhere)
+    USceneComponent* Origin;
+
+    UPROPERTY(VisibleAnywhere)
+    UStaticMeshComponent* GridMesh;
+
     virtual void BeginPlay() override;
+
+private:
+    UPROPERTY()
+    UMaterialInstanceDynamic* GridMaterial;
 
 private:
     Snake::Dim GridDim;

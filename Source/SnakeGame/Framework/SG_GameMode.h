@@ -8,6 +8,8 @@
 #include "SG_GameMode.generated.h"
 
 class ASG_Grid;
+class UDataTable;
+class AExponentialHeightFog;
 
 UCLASS()
 class SNAKEGAME_API ASG_GameMode : public AGameModeBase
@@ -26,9 +28,23 @@ protected:
     UPROPERTY(EditDefaultsOnly)
     TSubclassOf<ASG_Grid> GridVisualClass;
 
-private:
-    TUniquePtr<Snake::Game> Game;
+    UPROPERTY(EditDefaultsOnly, Category = "Design")
+    UDataTable* ColorsTable;
 
+private:
     UPROPERTY()
     ASG_Grid* GridVisual;
+
+    UPROPERTY()
+    AExponentialHeightFog* Fog;
+
+    TUniquePtr<Snake::Game> Game;
+    uint32 ColorTableIndex{0};
+
+private:
+    UFUNCTION(Exec, Category = "Console command")
+    void NextColor();
+
+    void FindFog();
+    void UpdateColors();
 };
