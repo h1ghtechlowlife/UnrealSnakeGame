@@ -12,7 +12,7 @@ public class SnakeGame : ModuleRules
 
         PublicIncludePaths.AddRange(new string[] { "SnakeGame" });
 
-        if (Target.Configuration != UnrealTargetConfiguration.Shipping) 
+        if (Target.Configuration != UnrealTargetConfiguration.Shipping)
         {
             PublicDependencyModuleNames.Add("FunctionalTesting");
         }

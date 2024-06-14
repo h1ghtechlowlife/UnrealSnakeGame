@@ -6,6 +6,7 @@
 
 namespace Snake
 {
+// width x height
 struct Dim
 {
     uint32 width;
