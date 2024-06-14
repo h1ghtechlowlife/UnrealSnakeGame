@@ -46,5 +46,10 @@ private:
     void NextColor();
 
     void FindFog();
+
+    /**
+     * Updates Grid and ExponentialFog colors
+     * according to the ColorsTable property
+     */
     void UpdateColors();
 };
